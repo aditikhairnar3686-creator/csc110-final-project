@@ -50,3 +50,40 @@ Newest at the bottom. Template:
 **Decided:** A Save button writes `data/trip.txt`. The app loads that file when it starts; if it is missing, it starts an empty trip with a friendly message instead of crashing.
 **Why:** Saving is visible in the demo ("save, close, reopen") and easier to explain than auto-save.
 **Other options:** Save automatically after every change.
+
+## D10: Leg is its own class, held by Stop
+**Decided:** A `Leg` class (miles, minutes, status), and each `Stop` holds one `Leg` object.
+**Why:** Keeps `Stop` small, puts the leg-status logic in one place, and shows an object holding another object.
+**Other options:** Put `legMiles`, `legMinutes`, `legStatus` straight on `Stop`.
+
+## D11: Rule methods return a String message
+**Decided:** `Trip` methods that can be rejected return a `String`: `""` means it worked, anything else is the error to show.
+**Why:** The rule writes its own message, so it lives in the model and can be tested. Exceptions aren't covered in CSC110 yet.
+**Other options:** Return `boolean` and let the UI write the message.
+
+## D12: Money is a double in dollars
+**Decided:** Costs and budget are `double` dollars, shown with 2 decimals.
+**Why:** Easiest to read and explain; precision is fine at this scale.
+**Other options:** `int` cents; `int` whole dollars.
+
+## D13: The first stop's leg is ignored
+**Decided:** Whatever stop is first has its leg shown as "—", and it isn't counted in totals or the incomplete warning. If that stop later stops being first, the normal OUTDATED/MISSING rule applies.
+**Why:** There is no previous stop to drive from, so the leg means nothing.
+
+## D14: Can't lower the number of days below a stop's day
+**Decided:** Changing the trip from 7 days to 5 is rejected if any stop is on day 6 or 7 ("move it first").
+**Why:** Same "reject, don't break data" idea as D5 and D6.
+
+## D15: Stop names can't contain "|"
+**Decided:** Names containing `|` are rejected.
+**Why:** `|` separates fields in the save file, so allowing it would corrupt the file.
+
+## D16: A new stop is placed by its day
+**Decided:** `addStop` inserts the new stop after the last stop with the same or an earlier day. Move Up/Down then fine-tune order within a day (they only swap stops with the same day).
+**Why:** Appending to the end would break D6 for most new stops (e.g. adding a Day 2 stop to a 7-day trip), and it avoids needing a position picker.
+**Other options:** Insert after the selected stop; always append to the end.
+
+## D17: Leg minutes must be 0–59
+**Decided:** When entering a leg, hours must be ≥ 0 and minutes must be from 0 to 59 (e.g. 1h 90m is rejected; type 2h 30m).
+**Why:** Catches typos and keeps hours + minutes meaning one clear thing.
+**Other options:** Allow any minutes ≥ 0 and convert them.

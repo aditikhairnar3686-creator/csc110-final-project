@@ -16,3 +16,9 @@ _Avoid_: destination, location, waypoint.
 _Avoid_: segment, connection, route, travel estimate (use "leg" in code).
 
 **Leg status**: CURRENT (numbers are up to date and counted), OUTDATED (the stops around it changed, so the numbers are shown but not counted), or MISSING (no numbers entered yet).
+
+**First stop**: Whatever stop is at the top of the list right now. It has no leg that counts (D13).
+_Avoid_: start, origin.
+
+**Planned cost**: The sum of every stop's cost. Remaining budget = budget − planned cost.
+_Avoid_: total spent, expenses.
