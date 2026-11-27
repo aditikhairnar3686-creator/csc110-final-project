@@ -10,3 +10,10 @@ You'll use these in your write-up and slides. Template:
 - **What I learned:**
 - **Next:**
 -->
+
+## 2026-11-26 — Finish and submit proposal
+- **Goal:** Finalize docs/01-proposal.md (Mile Marker road trip planner) and turn it in.
+- **What I asked for:** To see the finished proposal, then whether I needed a git tag for it.
+- **How I steered / corrected Claude:** Nothing to correct in this chat. I asked about the tag myself before committing.
+- **What I learned:** Each deliverable needs a git tag (`proposal`, `plan-design-prototype`, `final`) so the instructor can see what I had on the due date.
+- **Next:** /project-plan (due Mon Nov 30 with the class design and UI prototype).
